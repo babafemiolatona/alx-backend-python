@@ -22,8 +22,7 @@ async def wait_n(n: int, max_delay: int) -> List[float]:
     Returns:
         List[float]: List of actual delays from each coroutine.
     """
-    delays: []
+    delays = []
     for _ in range(n):
         delays.append(asyncio.create_task(wait_random(max_delay)))
     return sorted([await delay for delay in asyncio.as_completed(delays)])
-
