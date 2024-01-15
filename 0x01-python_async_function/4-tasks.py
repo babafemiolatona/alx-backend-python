@@ -3,7 +3,6 @@
 Execute multiple coroutines at the same time with async
 """
 import asyncio
-import random
 from typing import List
 
 
@@ -24,5 +23,5 @@ async def task_wait_n(n: int, max_delay: int) -> List[float]:
     """
     delays = []
     for _ in range(n):
-        delays.append(asyncio.create_task(task_wait_random(max_delay)))
+        delays.append(task_wait_random(max_delay))
     return sorted([await delay for delay in asyncio.as_completed(delays)])
